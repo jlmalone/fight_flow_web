@@ -12,9 +12,12 @@ const VideosPage: React.FC = () => {
   useEffect(() => {
     const loadVideos = async () => {
       try {
-        // Load videos from JSON file
-        const response = await fetch(`${process.env.PUBLIC_URL}/videos.json`);
+        // Load videos from JSON file with cache busting
+        const timestamp = new Date().getTime();
+        const response = await fetch(`${process.env.PUBLIC_URL}/videos.json?t=${timestamp}`);
         const data = await response.json();
+
+        console.log('Loaded videos:', data.videos?.length || 0);
 
         // Parse the videos array from the JSON structure
         const loadedVideos: Video[] = data.videos.map((v: any) => ({
