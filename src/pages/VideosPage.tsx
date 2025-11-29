@@ -10,33 +10,30 @@ const VideosPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // TODO: Replace with actual API call or Firebase fetch
-    // For now, using sample data
     const loadVideos = async () => {
       try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Load videos from JSON file
+        const response = await fetch(`${process.env.PUBLIC_URL}/videos.json`);
+        const data = await response.json();
 
-        // Sample videos (you'll replace this with actual data)
-        const sampleVideos: Video[] = [
-          {
-            id: '1',
-            title: 'Fight and Flow Video 1',
-            description: 'High-energy movement practice combining martial arts techniques with flowing movements',
-            thumbnailURL: 'https://via.placeholder.com/400x200/000000/00cc66?text=Fight+Flow+1',
-            videoURL: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-            duration: 111,
-            category: 'Flow' as any,
-            difficulty: 'Beginner' as any,
-            instructor: 'Fight and Flow',
-            tags: ['workout', 'flow', 'movement'],
-            equipment: [],
-            isFeatured: true
-          },
-          // Add more sample videos as needed
-        ];
+        // Parse the videos array from the JSON structure
+        const loadedVideos: Video[] = data.videos.map((v: any) => ({
+          id: v.id,
+          title: v.title,
+          description: v.description,
+          thumbnailURL: v.thumbnailURL,
+          videoURL: v.videoURL,
+          duration: v.duration,
+          category: v.category,
+          difficulty: v.difficulty,
+          instructor: v.instructor,
+          tags: v.tags || [],
+          equipment: v.equipment || [],
+          isFeatured: v.isFeatured,
+          createdAt: v.createdAt ? new Date(v.createdAt) : undefined
+        }));
 
-        setVideos(sampleVideos);
+        setVideos(loadedVideos);
         setLoading(false);
       } catch (error) {
         console.error('Error loading videos:', error);
