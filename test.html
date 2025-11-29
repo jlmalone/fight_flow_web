@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Loading Test</title>
+    <style>
+        body {
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            padding: 20px;
+        }
+        pre {
+            background: #111;
+            padding: 10px;
+            border: 1px solid #0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fight Flow Web - Video Loading Test</h1>
+    <div id="results"></div>
+
+    <script>
+        const results = document.getElementById('results');
+
+        async function testVideoLoading() {
+            try {
+                results.innerHTML += '<p>Fetching videos.json...</p>';
+
+                const timestamp = new Date().getTime();
+                const response = await fetch(`/fight_flow_web/videos.json?t=${timestamp}`);
+
+                results.innerHTML += `<p>Response status: ${response.status}</p>`;
+
+                const data = await response.json();
+
+                results.innerHTML += `<p>Total videos: ${data.videos?.length || 0}</p>`;
+                results.innerHTML += `<p>Video titles:</p>`;
+
+                const titles = data.videos.map(v => v.title).join('<br>');
+                results.innerHTML += `<pre>${titles}</pre>`;
+
+                results.innerHTML += `<p>First video full data:</p>`;
+                results.innerHTML += `<pre>${JSON.stringify(data.videos[0], null, 2)}</pre>`;
+
+            } catch (error) {
+                results.innerHTML += `<p style="color: red;">ERROR: ${error.message}</p>`;
+                console.error('Error:', error);
+            }
+        }
+
+        testVideoLoading();
+    </script>
+</body>
+</html>
