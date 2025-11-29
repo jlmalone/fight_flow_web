@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/fight_flow_web/static/css/main.ae6cbe69.css",
-    "main.js": "/fight_flow_web/static/js/main.f326b326.js",
+    "main.js": "/fight_flow_web/static/js/main.dd2b914f.js",
     "static/js/453.0a19f528.chunk.js": "/fight_flow_web/static/js/453.0a19f528.chunk.js",
     "index.html": "/fight_flow_web/index.html",
     "main.ae6cbe69.css.map": "/fight_flow_web/static/css/main.ae6cbe69.css.map",
-    "main.f326b326.js.map": "/fight_flow_web/static/js/main.f326b326.js.map",
+    "main.dd2b914f.js.map": "/fight_flow_web/static/js/main.dd2b914f.js.map",
     "453.0a19f528.chunk.js.map": "/fight_flow_web/static/js/453.0a19f528.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ae6cbe69.css",
-    "static/js/main.f326b326.js"
+    "static/js/main.dd2b914f.js"
   ]
 }
