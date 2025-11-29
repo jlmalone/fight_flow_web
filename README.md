@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# Fight Flow Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive fitness video streaming platform featuring fight choreography, flow movement, and workout content with a distinctive Matrix-themed interface.
 
-## Available Scripts
+![Platform](https://img.shields.io/badge/platform-Web-blue)
+![React](https://img.shields.io/badge/React-18-61dafb)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6)
+![Firebase](https://img.shields.io/badge/Firebase-Latest-orange)
 
-In the project directory, you can run:
+## 🌟 Overview
 
-### `npm start`
+Fight Flow Web is the web companion to the Fight & Flow iOS and tvOS applications, providing on-demand access to workout videos with rich categorization, smart filtering, and an immersive Matrix-inspired user interface. Built with modern web technologies for optimal performance across all devices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ✨ Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Core Features
+- **Video Library**: Comprehensive collection of workout videos with rich metadata
+- **Full-Screen Video Playback**: Native HTML5 video player with controls
+- **Smart Filtering**: Filter by category, difficulty level, and instructor
+- **Global Search**: Search across titles, descriptions, tags, and instructors
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
 
-### `npm test`
+### Advanced Features
+- **Matrix Theme**: Distinctive neon green (#00cc66) UI with glowing effects
+- **Category System**: Browse by Technique, Flow, Retreat, Mindfulness, Strength, Flexibility
+- **Difficulty Levels**: Beginner, Intermediate, and Advanced classifications
+- **Video Details**: Rich video information pages with metadata display
+- **Smooth Animations**: Polished transitions and hover effects
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Quick Start
 
-### `npm run build`
+```bash
+# Install dependencies
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Start development server
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Open browser to http://localhost:3000
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📁 Project Structure
 
-### `npm run eject`
+```
+fight_flow_web/
+├── src/
+│   ├── components/     # Reusable components
+│   ├── pages/          # Page components
+│   ├── styles/         # Matrix theme CSS
+│   └── types/          # TypeScript definitions
+└── public/
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🎨 Matrix Design System
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Primary Color**: #00cc66 (Matrix Green)
+- **Accent Color**: #00ff88 (Bright Green)
+- **Background**: #000000 (Pure Black)
+- **Typography**: Menlo, Courier New (Monospace)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 📄 License
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Proprietary software for Fight and Flow.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Built with ⚡️ using React, TypeScript & Matrix aesthetics**

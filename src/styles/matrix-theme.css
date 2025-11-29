@@ -1,0 +1,354 @@
+/* Fight Flow Web - Matrix Theme CSS */
+
+:root {
+  /* Matrix Green Color Palette */
+  --matrix-green: #00cc66;
+  --bright-matrix-green: #00ff88;
+  --matrix-black: #000000;
+  --matrix-glow: 0 0 10px #00cc66;
+  --matrix-glow-strong: 0 0 20px #00cc66;
+  --matrix-font: 'Menlo', 'Courier New', monospace;
+
+  /* Difficulty Colors */
+  --beginner-color: #00cc66;
+  --intermediate-color: #ffaa00;
+  --advanced-color: #ff4444;
+
+  /* Semantic Colors */
+  --text-primary: #00cc66;
+  --text-secondary: rgba(0, 204, 102, 0.7);
+  --border-color: #00cc66;
+  --hover-color: #00ff88;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--matrix-black) !important;
+  color: var(--matrix-green) !important;
+  font-family: var(--matrix-font) !important;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Subtle screen flicker effect */
+@keyframes matrix-flicker {
+  0%, 98% { opacity: 1; }
+  99% { opacity: 0.98; }
+  100% { opacity: 1; }
+}
+
+body {
+  animation: matrix-flicker 3s infinite alternate;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--matrix-green);
+  font-family: var(--matrix-font);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: var(--matrix-glow);
+}
+
+p, span, div {
+  color: var(--matrix-green);
+  font-family: var(--matrix-font);
+}
+
+a {
+  color: var(--bright-matrix-green);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--matrix-green);
+  text-shadow: var(--matrix-glow);
+}
+
+/* Buttons */
+.matrix-button {
+  background-color: var(--matrix-black);
+  color: var(--matrix-green);
+  border: 2px solid var(--matrix-green);
+  font-family: var(--matrix-font);
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--matrix-glow);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.matrix-button:hover {
+  background-color: var(--matrix-green);
+  color: var(--matrix-black);
+  box-shadow: var(--matrix-glow-strong);
+  transform: scale(1.05);
+}
+
+.matrix-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.matrix-button-primary {
+  background-color: var(--matrix-green);
+  color: var(--matrix-black);
+}
+
+.matrix-button-primary:hover {
+  background-color: var(--bright-matrix-green);
+}
+
+/* Inputs */
+.matrix-input {
+  background-color: var(--matrix-black);
+  color: var(--matrix-green);
+  border: 2px solid var(--matrix-green);
+  font-family: var(--matrix-font);
+  padding: 10px 15px;
+  box-shadow: var(--matrix-glow);
+  width: 100%;
+  font-size: 14px;
+}
+
+.matrix-input:focus {
+  outline: none;
+  box-shadow: var(--matrix-glow-strong);
+  border-color: var(--bright-matrix-green);
+}
+
+.matrix-input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Cards */
+.matrix-card {
+  background-color: var(--matrix-black);
+  border: 2px solid var(--matrix-green);
+  box-shadow: var(--matrix-glow);
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.matrix-card:hover {
+  box-shadow: var(--matrix-glow-strong);
+  transform: translateY(-2px);
+}
+
+/* Video Card Specific */
+.video-card {
+  background-color: var(--matrix-black);
+  border: 2px solid var(--matrix-green);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.video-card:hover {
+  border-color: var(--bright-matrix-green);
+  box-shadow: 0 0 30px var(--matrix-green);
+  transform: scale(1.03);
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid var(--matrix-green);
+}
+
+/* Difficulty Badges */
+.difficulty-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.difficulty-beginner {
+  background-color: rgba(0, 204, 102, 0.2);
+  border: 1px solid var(--beginner-color);
+  color: var(--beginner-color);
+}
+
+.difficulty-intermediate {
+  background-color: rgba(255, 170, 0, 0.2);
+  border: 1px solid var(--intermediate-color);
+  color: var(--intermediate-color);
+}
+
+.difficulty-advanced {
+  background-color: rgba(255, 68, 68, 0.2);
+  border: 1px solid var(--advanced-color);
+  color: var(--advanced-color);
+}
+
+/* Header/Navigation */
+.matrix-header {
+  background-color: var(--matrix-black);
+  border-bottom: 2px solid var(--matrix-green);
+  box-shadow: 0 2px 10px var(--matrix-green);
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.matrix-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.matrix-logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: var(--matrix-glow);
+}
+
+/* Grid Layouts */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 24px;
+}
+
+/* Loading States */
+.matrix-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: var(--matrix-green);
+  font-size: 18px;
+  text-shadow: var(--matrix-glow);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.matrix-loading::after {
+  content: '...';
+  animation: pulse 1.5s infinite;
+}
+
+/* Filter Section */
+.filter-container {
+  padding: 20px;
+  background-color: var(--matrix-black);
+  border-bottom: 2px solid var(--matrix-green);
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-button {
+  padding: 8px 16px;
+  background-color: var(--matrix-black);
+  color: var(--matrix-green);
+  border: 1px solid var(--matrix-green);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.filter-button.active {
+  background-color: var(--matrix-green);
+  color: var(--matrix-black);
+}
+
+.filter-button:hover {
+  background-color: var(--matrix-green);
+  color: var(--matrix-black);
+}
+
+/* Video Player Container */
+.video-player-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.video-player {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 2px solid var(--matrix-green);
+  box-shadow: var(--matrix-glow-strong);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--matrix-black);
+  border-left: 1px solid var(--matrix-green);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--matrix-green);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bright-matrix-green);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .matrix-header {
+    padding: 12px 16px;
+  }
+
+  .filter-container {
+    padding: 15px;
+  }
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.matrix-glow-text {
+  text-shadow: var(--matrix-glow);
+}
+
+.matrix-glow-strong {
+  box-shadow: var(--matrix-glow-strong);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
