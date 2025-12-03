@@ -1,5 +1,6 @@
 import React from 'react';
 import { Video, formatDuration } from '../types/Video';
+import { useFavorites } from '../services/FavoritesManager';
 import '../styles/matrix-theme.css';
 
 interface VideoCardProps {
@@ -8,21 +9,55 @@ interface VideoCardProps {
 }
 
 const VideoCard: React.FC<VideoCardProps> = ({ video, onClick }) => {
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const isFav = isFavorite(video.id);
+
   const getDifficultyClass = (difficulty: string) => {
     return `difficulty-badge difficulty-${difficulty.toLowerCase()}`;
   };
 
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleFavorite(video.id);
+  };
+
   return (
     <div className="video-card" onClick={() => onClick(video)}>
-      <img
-        src={video.thumbnailURL}
-        alt={video.title}
-        className="video-thumbnail"
-        onError={(e) => {
-          // Fallback for broken images
-          e.currentTarget.src = 'https://via.placeholder.com/400x200/000000/00cc66?text=Fight+Flow';
-        }}
-      />
+      <div style={{ position: 'relative' }}>
+        <img
+          src={video.thumbnailURL}
+          alt={video.title}
+          className="video-thumbnail"
+          onError={(e) => {
+            // Fallback for broken images
+            e.currentTarget.src = 'https://via.placeholder.com/400x200/000000/00cc66?text=Fight+Flow';
+          }}
+        />
+        {/* Favorite Button */}
+        <button
+          onClick={handleFavoriteClick}
+          style={{
+            position: 'absolute',
+            top: '12px',
+            right: '12px',
+            background: 'rgba(0, 0, 0, 0.7)',
+            border: '2px solid var(--matrix-green)',
+            color: isFav ? 'var(--matrix-green)' : 'var(--text-secondary)',
+            fontSize: '24px',
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 0.3s ease'
+          }}
+          title={isFav ? 'Remove from favorites' : 'Add to favorites'}
+        >
+          {isFav ? '★' : '☆'}
+        </button>
+      </div>
       <div style={{ padding: '16px' }}>
         <h3 style={{
           margin: '0 0 8px 0',

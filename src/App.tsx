@@ -4,6 +4,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import VideosPage from './pages/VideosPage';
 import VideoPlayerPage from './pages/VideoPlayerPage';
+import FavoritesPage from './pages/FavoritesPage';
 import AboutPage from './pages/AboutPage';
 import './styles/matrix-theme.css';
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/videos" element={<VideosPage />} />
             <Route path="/video/:id" element={<VideoPlayerPage />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/about" element={<AboutPage />} />
           </Routes>
         </main>

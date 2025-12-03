@@ -1,9 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Video } from '../types/Video';
+import FeaturedCarousel from '../components/FeaturedCarousel';
 import '../styles/matrix-theme.css';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadVideos = async () => {
+      try {
+        const timestamp = new Date().getTime();
+        const response = await fetch(`${process.env.PUBLIC_URL}/videos.json?t=${timestamp}`);
+        const data = await response.json();
+        const loadedVideos: Video[] = data.videos.map((v: any) => ({
+          id: v.id,
+          title: v.title,
+          description: v.description,
+          thumbnailURL: v.thumbnailURL,
+          videoURL: v.videoURL,
+          duration: v.duration,
+          category: v.category,
+          difficulty: v.difficulty,
+          instructor: v.instructor,
+          tags: v.tags || [],
+          equipment: v.equipment || [],
+          isFeatured: v.isFeatured,
+          createdAt: v.createdAt ? new Date(v.createdAt) : undefined
+        }));
+        setVideos(loadedVideos);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error loading videos:', error);
+        setLoading(false);
+      }
+    };
+
+    loadVideos();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="matrix-loading">
+        Loading content
+      </div>
+    );
+  }
 
   return (
     <div className="container" style={{ paddingTop: '40px', paddingBottom: '60px' }}>
@@ -38,6 +82,9 @@ const HomePage: React.FC = () => {
           Explore Videos
         </button>
       </div>
+
+      {/* Featured Videos Carousel */}
+      <FeaturedCarousel videos={videos} />
 
       {/* Features Section */}
       <div style={{
